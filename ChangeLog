@@ -686,9 +686,15 @@ Added FrameBufferAttachment::resizeGLObjectBuffers(..) and releaseGLObjects(..) 
 
 Tue, 2 Jul 2019 20:37:02 +0200
 Author : StefanBruens
+<<<<<<< HEAD
 Fix wxWidgets COMPONENTS specification, deprecated usage broken with CMake 3.14Current FindWxWidgets.cmake allows to specify OPTIONAL components, unfortunately
 this broke the (deprecated) use of wxWidgets_USE_LIBS.
 
+=======
+Fix wxWidgets COMPONENTS specification, deprecated usage broken with CMake 3.14Current FindWxWidgets.cmake allows to specify OPTIONAL components, unfortunately
+this broke the (deprecated) use of wxWidgets_USE_LIBS.
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 Fixes: #779
 
 Tue, 2 Jul 2019 20:21:45 +0100
@@ -717,10 +723,17 @@ Removed stray tab
 
 Tue, 25 Jun 2019 17:09:46 +1200
 Author : jimcamel
+<<<<<<< HEAD
 Fixed bug where FFmpeg Image Stream would stop if paused for more than 10 secondsThe FFmpeg image stream class uses a 10 second timeout between frames to determine if the stream is dead and if so closes it. However, the timeout is determined using the variable lastUpdateTS which stores the last time the publishNewFrame function was called, and if the video has been playing and then is paused for longer than 10 seconds, when it is unpaused this timeout will fire and the stream will be closed, stopping the video playing beyond what has been buffered.
 
 To stop this timeout from happening before the video starts playing, the timeout checks to see if the lastUpdateTS > 0 (at initialization it is set to 0). In this fix, we simply set the value of lastUpdateTS to 0 when the video is unpaused, this will force the check to skip on unpause, and from then on lastUpdateTS will have the correct value again.
 
+=======
+Fixed bug where FFmpeg Image Stream would stop if paused for more than 10 secondsThe FFmpeg image stream class uses a 10 second timeout between frames to determine if the stream is dead and if so closes it. However, the timeout is determined using the variable lastUpdateTS which stores the last time the publishNewFrame function was called, and if the video has been playing and then is paused for longer than 10 seconds, when it is unpaused this timeout will fire and the stream will be closed, stopping the video playing beyond what has been buffered.
+
+To stop this timeout from happening before the video starts playing, the timeout checks to see if the lastUpdateTS > 0 (at initialization it is set to 0). In this fix, we simply set the value of lastUpdateTS to 0 when the video is unpaused, this will force the check to skip on unpause, and from then on lastUpdateTS will have the correct value again.
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 The lastUpdateTS variable is private and only used for this one function, so there should be no side effects from the change.
 
 Fri, 7 Jun 2019 12:45:45 +0200
@@ -969,8 +982,13 @@ Override default behavior for linear vector interpolations
 
 Tue, 26 Feb 2019 17:19:06 +0000
 Author : Chris Djali
+<<<<<<< HEAD
 Resolve OpenGL error caused by confusion between geometry shader implementations.There are two types of Geometry Shaders in OpenGL. One is provided by `GL_EXT_geometry_shader4` and `GL_ARB_geometry_shader4` and requires that certain parameters are set with calls to `glProgramParameteri` before the program is linked. The other is provided by OpenGL 3.2 as a core feature and by the GLES extensions `GL_EXT_geometry_shader` and `GL_OES_geometry_shader` and requires these parameters to be set in the GLSL source itself.
 
+=======
+Resolve OpenGL error caused by confusion between geometry shader implementations.There are two types of Geometry Shaders in OpenGL. One is provided by `GL_EXT_geometry_shader4` and `GL_ARB_geometry_shader4` and requires that certain parameters are set with calls to `glProgramParameteri` before the program is linked. The other is provided by OpenGL 3.2 as a core feature and by the GLES extensions `GL_EXT_geometry_shader` and `GL_OES_geometry_shader` and requires these parameters to be set in the GLSL source itself.
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 The value of `isGeometryShader4Supported` is being used to determine if the `glProgramParameteri` calls should occur, so it should only be `true` when one of the extensions requiring them is present.
 
 Tue, 5 Mar 2019 09:32:55 -0800
@@ -5563,10 +5581,17 @@ Added more plugins and texture shader to iOS example, fixed a couple of missed i
 
 Fri, 28 Apr 2017 16:51:34 +0200
 Author : Remo E
+<<<<<<< HEAD
 Avoid call of SetupThreads in DatabasePagerThis solves a bug with some shared library configurations. Sometimes the DatabasePager Singleton is initialised before one can call other configuration options like "setNumOfDatabaseThreadsHint". But OSG initialise it here:
 
 https://github.com/openscenegraph/OpenSceneGraph/blob/master/src/osgDB/DatabasePager.cpp#L1555 
 
+=======
+Avoid call of SetupThreads in DatabasePagerThis solves a bug with some shared library configurations. Sometimes the DatabasePager Singleton is initialised before one can call other configuration options like "setNumOfDatabaseThreadsHint". But OSG initialise it here:
+
+https://github.com/openscenegraph/OpenSceneGraph/blob/master/src/osgDB/DatabasePager.cpp#L1555 
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 So this call is not needed?!
 
 Wed, 26 Apr 2017 17:10:58 +0100
@@ -5732,12 +5757,21 @@ Merge pull request #237 from remoe/patch-1Fix VS2013 build issue
 
 Wed, 29 Mar 2017 15:28:09 +0200
 Author : Remo E
+<<<<<<< HEAD
 Fix VS2013 build issueFix this build issue on VS2013:
 
 ```
 \src\osg\State.cpp(99): fatal error C1017: invalid integer constant expression
 ```
 
+=======
+Fix VS2013 build issueFix this build issue on VS2013:
+
+```
+\src\osg\State.cpp(99): fatal error C1017: invalid integer constant expression
+```
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 I hope this works also on other platforms.
 
 Wed, 29 Mar 2017 11:38:29 +0100
@@ -6722,6 +6756,7 @@ Merge pull request #170 from crubel/PThreadPullRequestFixed compile time errors 
 
 Fri, 2 Dec 2016 08:07:15 -0500
 Author : Curtis Rubel
+<<<<<<< HEAD
 Missed the printf define at the top of this file.Put back this:
 #ifdef DEBUG
 # define DPRINTF(arg) printf arg
@@ -6729,6 +6764,15 @@ Missed the printf define at the top of this file.Put back this:
 # define DPRINTF(arg)
 #endif
 
+=======
+Missed the printf define at the top of this file.Put back this:
+#ifdef DEBUG
+# define DPRINTF(arg) printf arg
+#else
+# define DPRINTF(arg)
+#endif
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 I think that should do it now...
 
 Fri, 2 Dec 2016 08:05:30 -0500
@@ -7358,7 +7402,11 @@ Added a osgCmakeExample to illustrate a minimal CMakeList.txt to show how to bui
 
 Thu, 6 Oct 2016 14:14:02 +0100
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #148 from LaurensVoerman/SmoothingVisitorfix bug in SmoothingVisitor tripped by bunny.ply
+=======
+Merge pull request #148 from LaurensVoerman/SmoothingVisitorfix bug in SmoothingVisitor tripped by bunny.ply
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 after duplicating the vertices to allow for multiple normals the indices of the new mesh (with duplicated vertices) were used with the vertices of the old mesh, causing a vector subscript out of range error.
 
 Thu, 6 Oct 2016 14:21:07 +0200
@@ -7853,10 +7901,17 @@ Added readObject() implementation.
 
 Tue, 5 Jul 2016 18:04:50 +0100
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #103 from marchelbling/update_stlUpdate stl.
 
     fixes magics color parsing
     adds support for incomplete binary stl files
+=======
+Merge pull request #103 from marchelbling/update_stlUpdate stl.
+
+    fixes magics color parsing
+    adds support for incomplete binary stl files
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 
 
 Tue, 5 Jul 2016 17:57:28 +0100
@@ -7865,6 +7920,7 @@ Fixed warnings
 
 Tue, 5 Jul 2016 17:49:03 +0100
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #102 from marchelbling/update_gles+osgjsUpdate gles+osgjs.
 
 
@@ -7878,6 +7934,21 @@ As compressed animation channels are no longer part of the main repo, I added a 
 I am yet to find a better solution to make this plugin entirely free from our specific code.
 
 Note: this PR will not change the gles compilation issues. We only compile on OSX/ubuntu and did not encounter any issue with the plugin.
+=======
+Merge pull request #102 from marchelbling/update_gles+osgjsUpdate gles+osgjs.
+
+
+
+This PR
+
+    cleans some gles coverity defects (remaining should only be false positive that need to be sorted out cleanly)
+    updates osgjs plugin to support serialization; the history of changes is squashed; details can still be found on cedricpinson fork if needed
+
+As compressed animation channels are no longer part of the main repo, I added a compilation flag for the osgjs plugin. The commit is isolated and the flag is not activated by default.
+I am yet to find a better solution to make this plugin entirely free from our specific code.
+
+Note: this PR will not change the gles compilation issues. We only compile on OSX/ubuntu and did not encounter any issue with the plugin.
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 
 
 Tue, 5 Jul 2016 17:08:08 +0200
@@ -8042,6 +8113,7 @@ Merge pull request #95 from marchelbling/tristripvisitor_index_optionAdds an ind
 
 Fri, 1 Jul 2016 18:03:29 +0100
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #94 from marchelbling/gles_plugin_updateUpdates gles plugin.
 
 This PR updates the GLES plugin with latest Sketchfab changes:
@@ -8051,14 +8123,32 @@ This PR updates the GLES plugin with latest Sketchfab changes:
     adds (yet another) normal smoother
 
 
+=======
+Merge pull request #94 from marchelbling/gles_plugin_updateUpdates gles plugin.
+
+This PR updates the GLES plugin with latest Sketchfab changes:
+
+    improves geometry splitting
+    processes/cleans animation (for subsequent osgjs serialization)
+    adds (yet another) normal smoother
+
+
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 
 
 Fri, 1 Jul 2016 17:57:44 +0100
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #93 from marchelbling/osganimationUpdates to osgAnimation is mainly for the gles plugint to work correctly.
 
     adds Quaternion array
     reintroduces KeyframeContainer::linearInterpolationDeduplicate
+=======
+Merge pull request #93 from marchelbling/osganimationUpdates to osgAnimation is mainly for the gles plugint to work correctly.
+
+    adds Quaternion array
+    reintroduces KeyframeContainer::linearInterpolationDeduplicate
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
     fixes MorphGeometry OSG serialization (target names)
 
 Fri, 1 Jul 2016 18:12:32 +0200
@@ -11087,7 +11177,11 @@ Added .gitignore to queiten down git status reports
 
 Mon, 25 Jan 2016 14:18:58 +0000
 Author : OpenSceneGraph git repository
+<<<<<<< HEAD
 Merge pull request #42 from podsvirov/topic-upgrade-doxygen-configurationFrom Konstantin Podsvirov, "Corrects an incorrect parsing of header files
+=======
+Merge pull request #42 from podsvirov/topic-upgrade-doxygen-configurationFrom Konstantin Podsvirov, "Corrects an incorrect parsing of header files
+>>>>>>> fe3fc897dbaae78d434c65405b22c232654fbba9
 without an extension when used doxygen larger 1.8.3.1"
 
 Tue, 19 Jan 2016 17:39:03 +0000
